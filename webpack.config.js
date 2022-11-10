@@ -1,7 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const webpack = require("webpack");
 
 module.exports = {
     mode: 'development',
@@ -20,17 +19,21 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: '../public/index.html',
         }),
-        new CleanWebpackPlugin()
+        // new CleanWebpackPlugin()
     ],
 
+    devServer: {
+        static: {
+            directory: path.resolve(__dirname, 'dist'),
+        },
+        port: 3000,
+        open: true,
+        hot: true,
+        compress: true,
+    },
 
     module: {
         rules: [
-            // {
-            //     test: /\.js$/,
-            //     exclude: /node_modules/,
-            //     loader: 'babel-loader'
-            // },
             {
                 test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
@@ -45,24 +48,16 @@ module.exports = {
                     },
                 },
             },
-            // {
-            //     test: /\.jsx$/,
-            //     exclude: /node_modules/,
-            //     loader: 'babel-loader',
-            // },
+
             {
-                test: /\.css$/,
-                loader: 'css-loader'
+                test: /\.css$/i,
+                include: path.resolve(__dirname, 'src'),
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             {
                 test: /\.html$/,
                 loader: 'html-loader'
-            },
-            // {
-            //     test: /\.tsx?$/,
-            //     use: 'ts-loader',
-            //     exclude: /node_modules/,
-            // },
+            }
         ]
     }
 }
