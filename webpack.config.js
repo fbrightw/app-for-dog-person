@@ -13,7 +13,7 @@ module.exports = {
         filename: '[name].js'
     },
     resolve: {
-        extensions: ['.js', '.tsx']
+        extensions: ['.js', '.tsx', '.jsx']
     },
     plugins: [
         new HTMLWebpackPlugin({
@@ -29,7 +29,7 @@ module.exports = {
         port: 3000,
         open: true,
         hot: true,
-        compress: true,
+        compress: true
     },
 
     module: {

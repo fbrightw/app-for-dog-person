@@ -10,14 +10,17 @@
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "bootstrap": "^5.2.2",
+    "cross-env": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "react-simple-image-slider": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack serve"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "build": "cross-env NODE_ENV=development webpack serve"
   },
   "eslintConfig": {
     "extends": [
