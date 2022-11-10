@@ -13,11 +13,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "app-for-dog-person/node_modules/.bin/webpack"
+    "start": "webpack"
   },
   "eslintConfig": {
     "extends": [
@@ -42,10 +41,14 @@
     "@babel/preset-env": "^7.20.2",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
+    "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.2.2",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.4",
     "webpack": "^5.75.0",
     "webpack-cli": "^4.10.0"
   }

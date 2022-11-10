@@ -1,5 +1,6 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const webpack = require("webpack");
 
 module.exports = {
@@ -12,37 +13,56 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js'
     },
-
+    resolve: {
+        extensions: ['.js', '.tsx']
+    },
     plugins: [
         new HTMLWebpackPlugin({
-            template: './public/index.html', // Данный html будет использован как шаблон
-        })
+            template: '../public/index.html',
+        }),
+        new CleanWebpackPlugin()
     ],
+
+
     module: {
         rules: [
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     loader: 'babel-loader'
+            // },
             {
-                test: /\.js$/,
+                test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            "@babel/preset-env",
+                            "@babel/preset-react",
+                            "@babel/preset-typescript",
+                        ],
+                    },
+                },
             },
-            {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            },
-            {
-                test: /\.jsx$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-            },
+            // {
+            //     test: /\.jsx$/,
+            //     exclude: /node_modules/,
+            //     loader: 'babel-loader',
+            // },
             {
                 test: /\.css$/,
                 loader: 'css-loader'
             },
             {
                 test: /\.html$/,
-                loader: 'css-loader'
+                loader: 'html-loader'
             },
+            // {
+            //     test: /\.tsx?$/,
+            //     use: 'ts-loader',
+            //     exclude: /node_modules/,
+            // },
         ]
     }
 }
