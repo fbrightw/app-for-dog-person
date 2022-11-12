@@ -1,8 +1,10 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
 
-module.exports = {
+module.exports = smp.wrap({
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
@@ -19,17 +21,19 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: '../public/index.html',
         }),
-        // new CleanWebpackPlugin()
+        new CleanWebpackPlugin()
+
     ],
 
     devServer: {
-        static: {
-            directory: path.resolve(__dirname, 'dist'),
-        },
-        port: 3000,
-        open: true,
+        port: 8080,
+        // contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
         compress: true
+    },
+
+    optimization: {
+        runtimeChunk: true,
     },
 
     module: {
@@ -45,6 +49,7 @@ module.exports = {
                             "@babel/preset-react",
                             "@babel/preset-typescript",
                         ],
+                        cacheDirectory: true
                     },
                 },
             },
@@ -60,4 +65,4 @@ module.exports = {
             }
         ]
     }
-}
+})
