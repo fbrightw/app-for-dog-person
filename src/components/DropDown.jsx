@@ -5,12 +5,18 @@ export default function DropDown() {
 
     const [loading, setLoading] = useState(true);
     const [breeds, setBreeds] = useState([]);
+    const [selectedBreed, setSelectedBreed] = useState('')
 
     useEffect(() => {
         fetch('https://dog.ceo/api/breeds/list/all')
             .then((response) => response.json())
             .then(data => {
-                const breedArray = Object.keys(data.message);
+                const breedArray = Object.keys(data.message).map(
+                    breed => ({
+                        name: breed,
+                        href: `#${breed}`
+                    })
+                )
                 setBreeds(breedArray);
                 setLoading(false);
             })
@@ -32,8 +38,8 @@ export default function DropDown() {
 
             <Dropdown.Menu>
                 {breeds.map(breed => (
-                    <Dropdown.Item href="#/action-1">
-                        {breed}
+                    <Dropdown.Item onClick={() => {setSelectedBreed(breed)}}>
+                        {breed.name}
                     </Dropdown.Item>
                 ))}
             </Dropdown.Menu>
