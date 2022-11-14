@@ -1,8 +1,12 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const webpack = require('webpack');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const smp = new SpeedMeasurePlugin();
 
-module.exports = {
+module.exports = smp.wrap({
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
@@ -10,26 +14,46 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].js',
+        clean: true
     },
     resolve: {
-        extensions: ['.js', '.tsx']
+        extensions: ['.js', '.tsx', '.jsx', '.ts']
     },
+    devServer: {
+        port: 3200
+        // static: {
+        //     directory: path.join(__dirname, 'dist'),
+        // },
+        // client: {
+        //     progress: true
+        // },
+        // hot: true,
+        // open: true,
+        // historyApiFallback: true,
+    },
+    target: 'web',
+    devtool: 'source-map',
     plugins: [
         new HTMLWebpackPlugin({
-            template: '../public/index.html',
+            template: './index.html'
         }),
-        // new CleanWebpackPlugin()
+        new webpack.ProgressPlugin(),
+        new CleanWebpackPlugin(),
+        // new MiniCssExtractPlugin()
     ],
 
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, 'dist'),
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
         },
-        port: 3000,
-        open: true,
-        hot: true,
-        compress: true,
     },
 
     module: {
@@ -45,14 +69,25 @@ module.exports = {
                             "@babel/preset-react",
                             "@babel/preset-typescript",
                         ],
+                        cacheDirectory: true
                     },
                 },
             },
-
             {
-                test: /\.css$/i,
-                include: path.resolve(__dirname, 'src'),
-                use: ['style-loader', 'css-loader', 'postcss-loader'],
+                test: /\.css$/,
+                // include: path.resolve(__dirname, 'src'),
+                use: [
+                    // {
+                        // loader: MiniCssExtractPlugin.loader,
+                        // options: {
+                        //     hmr: true,
+                        //     // reloadAll: true
+                        // },
+                    // },
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
             },
             {
                 test: /\.html$/,
@@ -60,4 +95,4 @@ module.exports = {
             }
         ]
     }
-}
+})
