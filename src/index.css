@@ -1,9 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.slider {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}

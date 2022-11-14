@@ -31,19 +31,23 @@ export default function DropDown() {
     }
     else {
         return (
-        <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button
-            </Dropdown.Toggle>
+            <div>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Dropdown Button
+                    </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-                {breeds.map(breed => (
-                    <Dropdown.Item onClick={() => {setSelectedBreed(breed)}}>
-                        {breed.name}
-                    </Dropdown.Item>
-                ))}
-            </Dropdown.Menu>
-        </Dropdown>
+                    <Dropdown.Menu>
+                        {breeds.map(breed => (
+                            <Dropdown.Item
+                                onClick={() => {setSelectedBreed(breed)}}
+                                key={breed.name}>
+                                {breed.name}
+                            </Dropdown.Item>
+                        ))}
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
         )
     }
 }

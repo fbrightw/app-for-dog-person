@@ -1,7 +1,9 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const smp = new SpeedMeasurePlugin();
 
 module.exports = smp.wrap({
@@ -12,28 +14,46 @@ module.exports = smp.wrap({
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].js',
+        clean: true
     },
     resolve: {
-        extensions: ['.js', '.tsx', '.jsx']
+        extensions: ['.js', '.tsx', '.jsx', '.ts']
     },
+    devServer: {
+        port: 3200
+        // static: {
+        //     directory: path.join(__dirname, 'dist'),
+        // },
+        // client: {
+        //     progress: true
+        // },
+        // hot: true,
+        // open: true,
+        // historyApiFallback: true,
+    },
+    target: 'web',
+    devtool: 'source-map',
     plugins: [
         new HTMLWebpackPlugin({
-            template: '../public/index.html',
+            template: './index.html'
         }),
-        new CleanWebpackPlugin()
-
+        new webpack.ProgressPlugin(),
+        new CleanWebpackPlugin(),
+        // new MiniCssExtractPlugin()
     ],
 
-    devServer: {
-        port: 8080,
-        // contentBase: path.resolve(__dirname, 'dist'),
-        hot: true,
-        compress: true
-    },
-
     optimization: {
-        runtimeChunk: true,
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        },
     },
 
     module: {
@@ -53,11 +73,21 @@ module.exports = smp.wrap({
                     },
                 },
             },
-
             {
-                test: /\.css$/i,
-                include: path.resolve(__dirname, 'src'),
-                use: ['style-loader', 'css-loader', 'postcss-loader'],
+                test: /\.css$/,
+                // include: path.resolve(__dirname, 'src'),
+                use: [
+                    // {
+                        // loader: MiniCssExtractPlugin.loader,
+                        // options: {
+                        //     hmr: true,
+                        //     // reloadAll: true
+                        // },
+                    // },
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader'
+                ]
             },
             {
                 test: /\.html$/,
