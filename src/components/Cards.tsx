@@ -24,8 +24,6 @@ export interface Breed {
 
 export default function Cards() {
 
-
-
     return(
         <Card style={{ width: '18rem', margin: '5% auto'}}>
             <Card.Img variant="top" src="holder.js/100px180" />

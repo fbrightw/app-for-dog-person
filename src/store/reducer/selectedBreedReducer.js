@@ -1,9 +1,11 @@
 export default function selectedBreedReducer(state = '', action) {
   switch (action.type) {
-    case 'SELECTED_BREED': {
+    case 'ON_SELECT_BREED': {
       return {
-        payload: 'Hi'
+
       }
     }
+    default:
+      return state
   }
 }

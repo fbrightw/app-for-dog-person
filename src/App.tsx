@@ -1,4 +1,4 @@
-// import React, {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Slider from "./components/Slider";
 import DropDown from "./components/DropDown";
 import Cards from "./components/Cards";
