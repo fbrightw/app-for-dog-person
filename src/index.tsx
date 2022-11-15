@@ -11,6 +11,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <Provider store={store}>
-        <App />
+        <React.StrictNode>
+            <App />
+        </React.StrictNode>
     </Provider>
 )

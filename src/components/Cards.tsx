@@ -1,7 +1,30 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 
+export interface Breed {
+  alt_names: string
+  experimental: number
+  hairless: number
+  hypoallergenic: number
+  id: string
+  life_span: string
+  name: string
+  natural: number
+  origin: string
+  rare: number
+  reference_image_id: any
+  rex: number
+  short_legs: number
+  suppressed_tail: number
+  temperament: string
+  weight_imperial: string
+  wikipedia_url: string
+}
+
+
 export default function Cards() {
+
+
 
     return(
         <Card style={{ width: '18rem', margin: '5% auto'}}>

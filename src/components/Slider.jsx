@@ -28,7 +28,7 @@ export default function Slider() {
        return (
             <>
               <SimpleImageSlider
-                  style={{margin: '5% auto'}}
+                  style={{margin: '5% auto', 'border-radius': '20%'}}
                   autoplay={true}
                   width={'50vw'}
                   height={'50vh'}
