@@ -6,7 +6,7 @@ export default function DropDown() {
     const [loading, setLoading] = useState(true);
     const [breeds, setBreeds] = useState([]);
 
-    store.subscribe(() => console.log(store.getState()))
+    // store.subscribe(() => console.log(store.getState()))
     useEffect(() => {
         fetch('https://dog.ceo/api/breeds/list/all')
             .then((response) => response.json())
@@ -40,10 +40,10 @@ export default function DropDown() {
                     <Dropdown.Menu style={{"maxHeight": '200px', 'overflowY': 'auto'}}>
                         {breeds.map(breed => (
                             <Dropdown.Item
-                                onClick={(value) => {
+                                onClick={() => {
                                   store.dispatch({
                                     type: 'ON_SELECT_BREED',
-                                    payload: value
+                                    payload: breed
                                   })
                                 }}
                                 key={breed.name}>

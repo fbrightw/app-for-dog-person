@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
+import {store} from "../store";
 
 export interface Breed {
   alt_names: string
@@ -22,7 +23,10 @@ export interface Breed {
 }
 
 
+
 export default function Cards() {
+
+    const breed = store.getState.breed
 
     return(
         <Card style={{ width: '18rem', margin: '5% auto'}}>
