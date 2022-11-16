@@ -3,11 +3,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import {store} from "../store";
 import {onSelectBreed} from "../store/action/onSelectBreed";
 
-export default function DropDown() {
+export default function DropDown(props) {
 
     const [loading, setLoading] = useState(true);
     const [breeds, setBreeds] = useState([]);
-    const [selectedBreed, setSelectedBreed] = useState('')
 
     // const ui = useSelector(state => state.selectedBreed);
 
@@ -26,7 +25,7 @@ export default function DropDown() {
             })
     }, [])
 
-    if (loading) {
+    if (loading === true) {
         return (
             <div className="spinner-border m-5" role="status">
                 <span className="sr-only">Loading...</span>
@@ -42,15 +41,15 @@ export default function DropDown() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu style={{"maxHeight": '200px', 'overflowY': 'auto'}}>
+                      <>
                         {breeds.map(breed => (
                             <Dropdown.Item
-                                onClick={(value) => {
-                                  store.dispatch(onSelectBreed(value))
-                                }}
+                                onClick={() => props.onChoose(breed.name)}
                                 key={breed.name}>
                                 {breed.name}
                             </Dropdown.Item>
                         ))}
+                      </>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
