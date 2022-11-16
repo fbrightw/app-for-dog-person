@@ -1,16 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import {store} from "../store";
-import {onSelectBreed} from "../store/action/onSelectBreed";
-
 export default function DropDown() {
 
     const [loading, setLoading] = useState(true);
     const [breeds, setBreeds] = useState([]);
-    const [selectedBreed, setSelectedBreed] = useState('')
 
-    // const ui = useSelector(state => state.selectedBreed);
-
+    store.subscribe(() => console.log(store.getState()))
     useEffect(() => {
         fetch('https://dog.ceo/api/breeds/list/all')
             .then((response) => response.json())
@@ -45,7 +41,10 @@ export default function DropDown() {
                         {breeds.map(breed => (
                             <Dropdown.Item
                                 onClick={(value) => {
-                                  store.dispatch(onSelectBreed(value))
+                                  store.dispatch({
+                                    type: 'ON_SELECT_BREED',
+                                    payload: value
+                                  })
                                 }}
                                 key={breed.name}>
                                 {breed.name}

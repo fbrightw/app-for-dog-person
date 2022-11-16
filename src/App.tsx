@@ -4,13 +4,6 @@ import DropDown from "./components/DropDown";
 import Cards from "./components/Cards";
 
 export default function App() {
-
-    // useEffect(() => {
-    //     const a =
-    // }, [])
-
-    // useEf
-
   return (
       <div>
           <div className="container mx-auto bg-indigo-600 rounded-xl shadow border p-8 m-10 text-center">

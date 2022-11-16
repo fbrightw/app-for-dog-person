@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import selectedBreedReducer from "./selectedBreedReducer";
+import {selectedBreedReducer} from "./selectedBreedReducer";
 
 const RootReducer = combineReducers({
-    selectedBreedReducer: selectedBreedReducer
+    breed: selectedBreedReducer
 })
 
 export default RootReducer;
