@@ -40,8 +40,7 @@ export default function Cards(props: ISelectedBreed) {
     fetch(`https://api.thedogapi.com/v1/breeds/search/?q=${props.selectedBreed}`,
         {credentials: 'omit'})
         .then(response => response.json())
-        .then(
-            data => {
+        .then(data => {
               setBreedInfo(data)
               loadImage(data)
             }
