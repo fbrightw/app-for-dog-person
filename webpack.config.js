@@ -36,7 +36,7 @@ module.exports = smp.wrap({
     devtool: 'source-map',
     plugins: [
         new HTMLWebpackPlugin({
-            template: './index.html'
+            template: '../public/index.html'
         }),
         new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
@@ -69,6 +69,7 @@ module.exports = smp.wrap({
                             "@babel/preset-react",
                             "@babel/preset-typescript",
                         ],
+                        // plugins: ['@babel/plugin-proposal-class-properties'],
                         cacheDirectory: true
                     },
                 },
