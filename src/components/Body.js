@@ -23,10 +23,10 @@ class Body extends Component {
 
   render() {
     return (
-        <>
+        <div>
           <div className="container mx-auto bg-indigo-600 rounded-xl shadow border p-8 m-10 text-center">
-            <p className="text-10xl text-gray-700 font-bold mb-5 text-center">
-              Time to choose your buddy &#128054;
+            <p className="text-9xl text-gray-700 font-bold text-center">
+              Because everyday is a Dog Day. &#128054;
             </p>
             <Slider/>
             <DropDown onChoose={this.onChoose}/>
@@ -34,7 +34,7 @@ class Body extends Component {
                 selectedBreed={this.state.selectedBreed}
             />
           </div>
-        </>
+        </div>
     );
   }
 }

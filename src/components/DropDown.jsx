@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
-import {store} from "../store";
-import {onSelectBreed} from "../store/action/onSelectBreed";
 
 export default function DropDown(props) {
 
     const [loading, setLoading] = useState(true);
     const [breeds, setBreeds] = useState([]);
+    const [selectedBreed, setSelectedBreed] = useState("")
 
     // const ui = useSelector(state => state.selectedBreed);
 
@@ -36,15 +35,18 @@ export default function DropDown(props) {
         return (
             <div>
                 <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Dropdown Button
+                    <Dropdown.Toggle variant="success" id="dropdown-basic" style={{background: 'green'}}>
+                      {selectedBreed !== "" ? selectedBreed : 'Breeds'}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu style={{"maxHeight": '200px', 'overflowY': 'auto'}}>
                       <>
                         {breeds.map(breed => (
                             <Dropdown.Item
-                                onClick={() => props.onChoose(breed.name)}
+                                onClick={() => {
+                                  props.onChoose(breed.name);
+                                  setSelectedBreed(breed.name)
+                                }}
                                 key={breed.name}>
                                 {breed.name}
                             </Dropdown.Item>

@@ -36,11 +36,9 @@ export default function Slider() {
                   showBullets={true}
                   showNavs={true}>
               </SimpleImageSlider>
-              <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-                  <p className="text-5xl text-gray-700 font-bold mb-5 text-center">
-                      Because everyday is a Dog Day. &#128054;
-                  </p>
-              </div>
+              <p className="font-mono italic text-5xl text-gray-700 font-bold mb-5 text-center">
+                  Time to choose your buddy
+              </p>
             </>
         );
     }
