@@ -28,7 +28,6 @@ module.exports = smp.wrap({
         // client: {
         //     progress: true
         // },
-        // hot: true,
         // open: true,
         // historyApiFallback: true,
     },
