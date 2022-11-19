@@ -22,15 +22,9 @@ module.exports = smp.wrap({
     },
     devServer: {
         port: 3200
-        // static: {
-        //     directory: path.join(__dirname, 'dist'),
-        // },
-        // client: {
-        //     progress: true
-        // },
-        // hot: true,
-        // open: true,
-        // historyApiFallback: true,
+    },
+    watchOptions: {
+        poll: 1000
     },
     target: 'web',
     devtool: 'source-map',
@@ -40,7 +34,7 @@ module.exports = smp.wrap({
         }),
         new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
-        // new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin()
     ],
 
     optimization: {
@@ -79,11 +73,11 @@ module.exports = smp.wrap({
                 include: path.resolve(__dirname, 'src'),
                 use: [
                     // {
-                        // loader: MiniCssExtractPlugin.loader,
-                        // options: {
-                        //     hmr: true,
-                        //     // reloadAll: true
-                        // },
+                    //     loader: MiniCssExtractPlugin.loader,
+                    //     options: {
+                    //         hmr: true,
+                    //         // reloadAll: true
+                    //     },
                     // },
                     'style-loader',
                     'css-loader',
