@@ -29,14 +29,14 @@ export default function Slider() {
             <>
               <SimpleImageSlider
                   style={{margin: '5% auto', borderRadius: '20%'}}
-                  autoplay={true}
-                  width={'50vw'}
-                  height={'50vh'}
+                  autoplay
+                  width={'70vw'}
+                  height={'60vh'}
                   images={images}
                   showBullets={true}
                   showNavs={true}>
               </SimpleImageSlider>
-              <p className="font-mono italic text-5xl text-gray-700 font-bold mb-5 text-center">
+              <p className="font-mono italic text-3xl text-gray-700 font-bold mb-5 text-center">
                   Time to choose your buddy
               </p>
             </>

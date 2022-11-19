@@ -33,7 +33,7 @@ module.exports = smp.wrap({
             template: '../public/index.html'
         }),
         new webpack.ProgressPlugin(),
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
     ],
 
@@ -70,7 +70,7 @@ module.exports = smp.wrap({
             },
             {
                 test: /\.css$/i,
-                include: path.resolve(__dirname, 'src'),
+                // include: path.resolve(__dirname, 'src'),
                 use: [
                     // {
                     //     loader: MiniCssExtractPlugin.loader,

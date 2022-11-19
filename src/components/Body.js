@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import Slider from "./Slider";
 import DropDown from "./DropDown";
 import Cards from "./Cards";
 
-class Body extends Component {
+export default class Body extends Component {
 
   constructor(props) {
     super(props);
@@ -23,9 +22,9 @@ class Body extends Component {
 
   render() {
     return (
-      <div className="container mx-auto bg-indigo-600 rounded-xl shadow border p-8 m-10 text-center">
-        <p className="text-9xl text-gray-700 font-bold text-center">
-          Because everyday is a Dog Day. &#128054;
+      <div className="container mx-auto p-10 bg-gray-100 text-center">
+        <p className="text-5xl text-gray-700 font-bold text-center">
+          Because everyday is a Dog Day &#128054;
         </p>
         <Slider/>
         <DropDown onChoose={this.onChoose}/>
@@ -36,8 +35,3 @@ class Body extends Component {
     );
   }
 }
-
-export default connect(state => ({
-  breed: state.breed
-}),
-)(Body);

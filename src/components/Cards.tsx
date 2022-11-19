@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Card} from "react-bootstrap";
+import {Card, ListGroup} from "react-bootstrap";
 
 interface IBreedInfo {
   weight: {
@@ -61,13 +61,15 @@ export default function Cards(props: ISelectedBreed) {
         <Card style={{width: '18rem', margin: '5% auto'}}>
             {(props.selectedBreed !== '' && breedInfo.length > 0) &&
                 <>
-                  <Card.Img variant="top" src={breedImg.url}/>
+                  <Card.Img variant="right" src={breedImg.url}/>
                   <Card.Body>
                     <Card.Title>{breedInfo[0].name}</Card.Title>
-                    <Card.Text>
-                      {breedInfo[0].temperament}
-                    </Card.Text>
-                    {/*<Button variant="primary">Go somewhere</Button>*/}
+                    <ListGroup variant="flush">
+                      <ListGroup.Item>{'height: '}{breedInfo[0].height.imperial}</ListGroup.Item>
+                      <ListGroup.Item>{'weight: '}{breedInfo[0].weight.imperial}</ListGroup.Item>
+                      <ListGroup.Item>{'temperament: '}{breedInfo[0].temperament}</ListGroup.Item>
+                      <ListGroup.Item>{'life span: '}{breedInfo[0].life_span}</ListGroup.Item>
+                    </ListGroup>
                   </Card.Body>
                 </>
             }
