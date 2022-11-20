@@ -9,6 +9,12 @@ class AppNavbar extends Component {
     return (
         <Navbar bg="light" expand="lg">
           <Container>
+            <img
+                src="/paw.png"
+                width="32"
+                height="32"
+                className="d-inline-block align-top"
+                alt="App logo"/>
             <Navbar.Brand href="#home">Get-Dog app</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
