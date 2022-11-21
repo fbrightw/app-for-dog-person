@@ -27,7 +27,7 @@ export default function Slider() {
       <>
         {isLoaded &&
             <SimpleImageSlider
-                style={{margin: '5% auto', borderRadius: '20%'}}
+                style={{margin: '5% auto'}}
                 autoplay
                 width={'60vw'}
                 height={'50vh'}
