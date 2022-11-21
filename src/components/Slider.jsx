@@ -25,7 +25,7 @@ export default function Slider() {
 
   return (
       <>
-          {isLoaded &&
+        {isLoaded &&
             <SimpleImageSlider
                 style={{margin: '5% auto', borderRadius: '20%'}}
                 autoplay
@@ -36,9 +36,6 @@ export default function Slider() {
                 showNavs={true}>
             </SimpleImageSlider>
         }
-        <p className="text-3xl text-gray-700 mb-5 text-center">
-          Time to choose your buddy
-        </p>
       </>
-  )
+  );
 }

@@ -7,7 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 class AppNavbar extends Component {
   render() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg">
           <Container>
             <img
                 src="/paw.png"

@@ -22,16 +22,21 @@ export default class Body extends Component {
 
   render() {
     return (
-      <div className="container mx-auto p-10 bg-gray-100 text-center">
-        <p className="text-4xl text-gray-700 font-bold text-center">
-          Because everyday is a Dog Day &#128054;
-        </p>
-        <Slider/>
-        <DropDown onChoose={this.onChoose}/>
-        <Cards
-            selectedBreed={this.state.selectedBreed}
-        />
-      </div>
+        <div className="mx-20 p-10 bg-gray-50 text-center">
+          <section>
+            <p className="text-4xl text-gray-700 font-bold text-center ">
+              Because everyday is a Dog Day &#128054;
+            </p>
+            <Slider/>
+            <p className="text-3xl text-gray-700 mb-5 text-center">
+              Time to choose your buddy
+            </p>
+            <DropDown onChoose={this.onChoose}/>
+          </section>
+          <Cards
+              selectedBreed={this.state.selectedBreed}
+          />
+        </div>
     );
   }
 }
