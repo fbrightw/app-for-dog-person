@@ -61,7 +61,11 @@ export default function Cards(props: ISelectedBreed) {
         <Card style={{width: '18rem', margin: '5% auto'}}>
             {(props.selectedBreed !== '' && breedInfo.length > 0) &&
                 <>
-                  <Card.Img variant="right" src={breedImg.url}/>
+                  <Card.Img
+                      variant="right"
+                      src={breedImg.url}
+                      style={{float: "right"}}
+                  />
                   <Card.Body>
                     <Card.Title>{breedInfo[0].name}</Card.Title>
                     <ListGroup variant="flush">

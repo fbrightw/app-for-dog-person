@@ -23,7 +23,7 @@ export default class Body extends Component {
 
   render() {
     return (
-        <div className="mx-20 p-10 bg-gray-50 text-center z-auto">
+        <div className="mx-44 p-10 bg-gray-50 text-center z-auto">
           <section>
             <p className="text-4xl text-gray-700 font-bold text-center ">
               Because everyday is a Dog Day &#128054;
