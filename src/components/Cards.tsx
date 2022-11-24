@@ -58,25 +58,23 @@ export default function Cards(props: ISelectedBreed) {
   }
 
     return (
-        <Card style={{width: '18rem', margin: '5% auto'}}>
-            {(props.selectedBreed !== '' && breedInfo.length > 0) &&
-                <>
-                  <Card.Img
-                      variant="right"
-                      src={breedImg.url}
-                      style={{float: "right"}}
-                  />
-                  <Card.Body>
+        (props.selectedBreed !== '' && breedInfo.length > 0) ?
+            <Card style={{width: '18rem', margin: '5% auto'}}>
+                <Card.Img
+                    variant="right"
+                    src={breedImg.url}
+                    style={{float: "right"}}
+                />
+                <Card.Body>
                     <Card.Title>{breedInfo[0].name}</Card.Title>
                     <ListGroup variant="flush">
-                      <ListGroup.Item>{'height: '}{breedInfo[0].height.imperial}</ListGroup.Item>
-                      <ListGroup.Item>{'weight: '}{breedInfo[0].weight.imperial}</ListGroup.Item>
-                      <ListGroup.Item>{'temperament: '}{breedInfo[0].temperament}</ListGroup.Item>
-                      <ListGroup.Item>{'life span: '}{breedInfo[0].life_span}</ListGroup.Item>
+                        <ListGroup.Item>{'height: '}{breedInfo[0].height.imperial}</ListGroup.Item>
+                        <ListGroup.Item>{'weight: '}{breedInfo[0].weight.imperial}</ListGroup.Item>
+                        <ListGroup.Item>{'temperament: '}{breedInfo[0].temperament}</ListGroup.Item>
+                        <ListGroup.Item>{'life span: '}{breedInfo[0].life_span}</ListGroup.Item>
                     </ListGroup>
-                  </Card.Body>
-                </>
-            }
-        </Card>
+                </Card.Body>
+            </Card>
+            : null
     );
 }
