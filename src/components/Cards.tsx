@@ -57,12 +57,7 @@ export default function Cards(props: ISelectedBreed) {
 
     return (
         (props.selectedBreed !== '' && breedInfo.length > 0) ?
-            <Card style={{width: '18rem', margin: '5% auto'}}>
-                <Card.Img
-                    variant="right"
-                    src={breedImg.url}
-                    style={{float: "right"}}
-                />
+            <Card style={{flexDirection: 'row', alignItems: 'center', padding: '10px', margin: '5% auto', width: '80%'}}>
                 <Card.Body>
                     <Card.Title>{breedInfo[0].name}</Card.Title>
                     <ListGroup variant="flush">
@@ -72,6 +67,9 @@ export default function Cards(props: ISelectedBreed) {
                         <ListGroup.Item>{'life span: '}{breedInfo[0].life_span}</ListGroup.Item>
                     </ListGroup>
                 </Card.Body>
+                <div style={{width: '30%'}}>
+                    <img src={breedImg.url}  alt="b" style={{borderRadius: '2%'}}/>
+                </div>
             </Card>
             : null
     );

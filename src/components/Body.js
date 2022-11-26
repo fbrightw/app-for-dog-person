@@ -33,10 +33,8 @@ export default class Body extends Component {
             Time to choose your buddy
           </p>
           <DropDown onChoose={this.onChoose}/>
-          <section id="search" className="search">
-            <Cards
-                selectedBreed={this.state.selectedBreed}
-            />
+          <section id="search">
+            <Cards selectedBreed={this.state.selectedBreed}/>
           </section>
         </div>
     );
