@@ -34,7 +34,6 @@ export default function Cards(props: ISelectedBreed) {
 
   const [breedInfo, setBreedInfo] = useState<IBreedInfo[]>([])
   const [breedImg, setBreedImg] = useState<IBreedImg>({breeds: [], height: "", id: "", url: "", width: ""})
-  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     fetch(`https://api.thedogapi.com/v1/breeds/search/?q=${props.selectedBreed}`,
@@ -53,7 +52,6 @@ export default function Cards(props: ISelectedBreed) {
         .then(response => response.json())
         .then(data => {
           setBreedImg(data);
-          setDataLoaded(true);
         })
   }
 

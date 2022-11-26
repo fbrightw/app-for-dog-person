@@ -24,20 +24,20 @@ export default class Body extends Component {
   render() {
     return (
         <div className="mx-44 p-10 bg-gray-50 text-center z-auto">
-          <section>
-            <p className="text-4xl text-gray-700 font-bold text-center ">
-              Because everyday is a Dog Day &#128054;
-            </p>
-            <Slider/>
-            <Description />
-            <p className="text-3xl text-gray-700 mb-5 p-10 text-center">
-              Time to choose your buddy
-            </p>
-            <DropDown onChoose={this.onChoose}/>
+          <p className="text-4xl text-gray-700 font-bold text-center ">
+            Because everyday is a Dog Day &#128054;
+          </p>
+          <Slider/>
+          <Description />
+          <p className="text-3xl text-gray-700 mb-5 p-10 text-center">
+            Time to choose your buddy
+          </p>
+          <DropDown onChoose={this.onChoose}/>
+          <section id="search" className="search">
+            <Cards
+                selectedBreed={this.state.selectedBreed}
+            />
           </section>
-          <Cards
-              selectedBreed={this.state.selectedBreed}
-          />
         </div>
     );
   }
