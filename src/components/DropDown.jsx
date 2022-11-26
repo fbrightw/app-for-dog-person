@@ -35,11 +35,11 @@ export default function DropDown(props) {
         return (
             <div>
                 <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic" style={{background: 'green'}}>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic" style={{background: 'green', width: '60%'}}>
                       {selectedBreed !== "" ? selectedBreed : 'Breeds'}
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu style={{"maxHeight": '200px', 'overflowY': 'auto'}}>
+                    <Dropdown.Menu style={{"maxHeight": '200px', 'overflowY': 'auto', width: '60%'}}>
                       <>
                         {breeds.map(breed => (
                             <Dropdown.Item

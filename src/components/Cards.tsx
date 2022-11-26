@@ -79,7 +79,11 @@ export default function Cards(props: ISelectedBreed) {
     return (
         (props.selectedBreed !== '' && breedInfo.length > 0) ?
             <div style={{display: 'flex', flexWrap: 'wrap', alignContent: 'center'}}>
-                <button className="back-to-top" style={{margin: '0 auto'}} onClick={() => onArrowClick()}>
+                <button
+                    className="back-to-top"
+                    style={{margin: '0 auto', color: "rgb(128, 128, 128)"}}
+                    onClick={() => onArrowClick()}
+                >
                     <i className="bi bi-arrow-up-circle" style={{fontSize: '50px'}}></i>
                 </button>
                 <Card style={{flexDirection: 'row', alignItems: 'center', padding: '10px', margin: '5% auto', width: '80%', float: 'right'}}>
