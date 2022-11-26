@@ -29,7 +29,7 @@ export default class Body extends Component {
           </p>
           <Slider/>
           <Description />
-          <p className="text-3xl text-gray-700 mb-5 p-10 text-center">
+          <p className="text-3xl text-gray-700 mb-3 p-10 text-center">
             Time to choose your buddy
           </p>
           <DropDown onChoose={this.onChoose}/>

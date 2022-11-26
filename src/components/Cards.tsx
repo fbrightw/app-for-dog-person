@@ -34,6 +34,7 @@ export default function Cards(props: ISelectedBreed) {
 
   const [breedInfo, setBreedInfo] = useState<IBreedInfo[]>([])
   const [breedImg, setBreedImg] = useState<IBreedImg>({breeds: [], height: "", id: "", url: "", width: ""})
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     fetch(`https://api.thedogapi.com/v1/breeds/search/?q=${props.selectedBreed}`,
@@ -55,6 +56,13 @@ export default function Cards(props: ISelectedBreed) {
         })
   }
 
+  function onLikeClick(value: boolean) {
+      console.log('click', value)
+      // @ts-ignore
+      document.getElementById("heart").className += 'red-color'
+      setIsLiked(value)
+  }
+
     return (
         (props.selectedBreed !== '' && breedInfo.length > 0) ?
             <Card style={{flexDirection: 'row', alignItems: 'center', padding: '10px', margin: '5% auto', width: '80%'}}>
@@ -66,6 +74,9 @@ export default function Cards(props: ISelectedBreed) {
                         <ListGroup.Item>{'temperament: '}{breedInfo[0].temperament}</ListGroup.Item>
                         <ListGroup.Item>{'life span: '}{breedInfo[0].life_span}</ListGroup.Item>
                     </ListGroup>
+                    <button type="button" className="btn btn-light" onClick={() => setIsLiked(!isLiked)}>
+                        <span id="heart" className={isLiked ? "bi bi-heart-fill red-color" : "bi bi-heart-fill"}></span>
+                    </button>
                 </Card.Body>
                 <div style={{width: '30%'}}>
                     <img src={breedImg.url}  alt="b" style={{borderRadius: '2%'}}/>
