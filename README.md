@@ -23,3 +23,5 @@ To run this project, install it locally using npm:
 ```
 $ npm install
 $ npm run start
+
+![Get-Dog app](https://user-images.githubusercontent.com/81295000/204146139-ce9e5b2c-7083-413c-b72e-64641cf51281.gif)
