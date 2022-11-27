@@ -26,4 +26,5 @@ $ npm run start
 
 ```
 
-![Get-Dog app](https://user-images.githubusercontent.com/81295000/204146139-ce9e5b2c-7083-413c-b72e-64641cf51281.gif)
+
+![Get-Dog app (1)](https://user-images.githubusercontent.com/81295000/204146215-05c77891-a03c-43ed-a8f4-5b112c2036f3.gif)
