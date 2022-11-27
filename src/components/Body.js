@@ -3,8 +3,10 @@ import Slider from "./Slider";
 import DropDown from "./DropDown";
 import Cards from "./Cards";
 import Description from "./Description";
+import {connect, useDispatch} from 'react-redux'
+import {changeStatus} from "../slices/LikedBreedsSlice";
 
-export default class Body extends Component {
+class Body extends Component {
 
   constructor(props) {
     super(props);
@@ -16,8 +18,16 @@ export default class Body extends Component {
   }
 
   onChoose(value) {
+    const LikedBreedInStore = this.props.liked;
+    let isBreedInStore = LikedBreedInStore.breeds.find((el => el.name === value));
+    let isLiked = (typeof isBreedInStore !== 'undefined') ? isBreedInStore.isLiked : false;
+    const dispatch = useDispatch();
+    dispatch(changeStatus({
+      name: value,
+      isLiked: isLiked,
+    }))
     this.setState({
-      selectedBreed: value
+      selectedBreed: value,
     })
   }
 
@@ -34,9 +44,15 @@ export default class Body extends Component {
           </p>
           <DropDown onChoose={this.onChoose}/>
           <section id="search">
-            <Cards selectedBreed={this.state.selectedBreed}/>
+            <Cards selectedBreed={this.state.selectedBreed}
+            />
           </section>
         </div>
     );
   }
 }
+
+export default connect(state => ({
+   liked: state.likedBreeds
+})
+)(Body)

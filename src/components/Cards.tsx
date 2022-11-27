@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Card, ListGroup} from "react-bootstrap";
-import {wishList} from "../utils";
+import {useDispatch, useSelector} from 'react-redux'
+import {changeStatus} from "../slices/LikedBreedsSlice";
 
 interface IBreedInfo {
   weight: {
@@ -20,7 +21,8 @@ interface IBreedInfo {
 }
 
 interface ISelectedBreed {
-  selectedBreed: string
+  selectedBreed: string;
+  isLiked: boolean
 }
 
 interface IBreedImg {
@@ -35,8 +37,12 @@ export default function Cards(props: ISelectedBreed) {
 
   const [breedInfo, setBreedInfo] = useState<IBreedInfo[]>([])
   const [breedImg, setBreedImg] = useState<IBreedImg>({breeds: [], height: "", id: "", url: "", width: ""})
-  const [isLiked, setIsLiked] = useState(false);
+    // @ts-ignore
+  const isLikedBreed = useSelector(state => state.likedBreeds)
+  const [isLiked, setIsLiked] = useState(props.isLiked);
+  const dispatch = useDispatch()
 
+  // console.log('in Cards isLiked', isLiked)
   useEffect(() => {
     fetch(`https://api.thedogapi.com/v1/breeds/search/?q=${props.selectedBreed}`,
         {credentials: 'omit'})
@@ -44,7 +50,6 @@ export default function Cards(props: ISelectedBreed) {
         .then(data => {
               setBreedInfo(data)
               loadImage(data)
-              setIsLiked(false)
             }
         )
   }, [props.selectedBreed])
@@ -58,15 +63,13 @@ export default function Cards(props: ISelectedBreed) {
         })
   }
 
-  function onLikeClick() {
-      setIsLiked(!isLiked)
-      // if (isLiked)
-      //     wishList.push(props.selectedBreed)
-      // else
-      //     wishList.filter(
-      //         el !== {props.selectedBreed}
-      //     )
-  }
+    function onLikeClick() {
+        dispatch(changeStatus({
+            name: props.selectedBreed,
+            isLiked: !props.isLiked
+        }))
+        setIsLiked(!isLiked)
+    }
 
   function onArrowClick() {
       // @ts-ignore

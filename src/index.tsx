@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {Route, Routes} from 'react-router'
+import {Provider} from "react-redux";
+import {store} from "./slices/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,10 +13,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App />} />
-            </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App />} />
+                </Routes>
+            </BrowserRouter>
+        </Provider>
     </React.StrictMode>
 );
