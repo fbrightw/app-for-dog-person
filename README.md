@@ -7,7 +7,7 @@
 
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+This project is created to help people to get the suitible dog breed by searching through them and getting info about them
 	
 ## Technologies
 Project is created with:
