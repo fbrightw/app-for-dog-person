@@ -9,37 +9,22 @@ export class Body extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectedBreed: ''
-    }
-
-    this.onChoose = this.onChoose.bind(this);
-  }
-
-  onChoose(value) {
-    this.setState({
-      selectedBreed: value,
-    })
   }
 
   render() {
     return (
-          <div className="mx-44 p-10 bg-gray-50">
-            <p className="text-4xl text-gray-700 font-bold text-center ">
-              Because everyday is a Dog Day &#128054;
-            </p>
-            <Slider/>
-            <Description />
-            <p className="text-3xl text-gray-700 mb-3 p-10 text-center">
-              Time to choose your buddy
-            </p>
-            <Search onChoose={this.onChoose}/>
-            <section id="search">
-              <Cards selectedBreed={this.state.selectedBreed}
-                     isLiked/>
-            </section>
-            <Footer />
-          </div>
+      <div className="mx-44 p-10 bg-gray-50">
+        <p className="text-4xl text-gray-700 font-bold text-center ">
+          Because everyday is a Dog Day &#128054;
+        </p>
+        <Slider/>
+        <Description />
+        <p className="text-3xl text-gray-700 mb-3 p-10 text-center">
+          Time to choose your buddy
+        </p>
+        <Search />
+        <Footer />
+      </div>
     );
   }
 }

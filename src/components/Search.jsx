@@ -1,10 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import MyDropdown from "../ui_elements/Dropdown/MyDropdown";
+import Cards from "./Cards";
 
 export default function Search(props) {
 
     const [loading, setLoading] = useState(true);
     const [breeds, setBreeds] = useState([]);
+    const [selectedBreed, setSelectedBreed] = useState('')
+
+    function onChoose(value) {
+      setSelectedBreed(value)
+    }
 
     useEffect(() => {
         fetch('https://dog.ceo/api/breeds/list/all')
@@ -21,19 +27,22 @@ export default function Search(props) {
             })
     }, [])
 
-    if (loading === true) {
-        return (
+    return (
+        <section id="search">
+          {loading
+          ?
             <div className="spinner-border m-5" role="status">
-                <span className="sr-only">Loading...</span>
+              <span className="sr-only">Loading...</span>
             </div>
-        )
-    }
-    else {
-      return (
-          <MyDropdown
-              data={breeds}
-              onChoose={props.onChoose}
+          :
+            <MyDropdown
+                data={breeds}
+                onChoose={onChoose}
+            />
+          }
+          <Cards selectedBreed={selectedBreed}
+                 isLiked
           />
-      )
-    }
+        </section>
+    )
 }

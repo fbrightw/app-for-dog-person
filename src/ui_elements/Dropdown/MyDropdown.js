@@ -1,24 +1,30 @@
 import React, {useState} from 'react';
 import './styles.css'
+import {useMemo} from "react";
 
 const MyDropdown = (props) => {
 
   const [clickedDropdown, setClickedDropdown] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [dropdownContent, setDropdownContent] = useState(props.data);
 
-  function onClickDropdown(e) {
+  function onClickDropdown() {
     setClickedDropdown(!clickedDropdown);
   }
 
-  function handleChange(event) {
-    event.preventDefault();
-    setInputValue(event.target.value)
+  const onInput = useMemo(() =>
+  {setDropdownContent([...dropdownContent].filter(breed => breed.name.includes(inputValue)))}, [inputValue])
 
+  const handleInputChange = (event) => {
+    event.preventDefault();
+    setInputValue(event.target.value);
+    onInput();
   }
 
   function breedChoose(e) {
     event.preventDefault();
     props.onChoose(e.target.value);
+    setInputValue(e.target.value);
     setClickedDropdown(false);
   }
 
@@ -31,31 +37,33 @@ const MyDropdown = (props) => {
           <div>
             <span className="label">Breed</span>
             <span className="value">
-            <input
+              <input
                 type="text"
                 placeholder="Select breed"
                 value={inputValue}
-                onChange={handleChange}
-            />
-          </span>
+                onChange={handleInputChange}
+              />
+            </span>
           </div>
           <i className='bx bx-chevron-down'></i>
         </div>
-        {clickedDropdown ?
+        {clickedDropdown
+            ?
             <div className="option">
               <div className="custom-option">
-                {props.data.map(
-                    breed => (
-                        <option
-                          key={`id_${breed.name}`}
-                          onClick={breedChoose}
-                        >
-                          {breed.name}
-                        </option>)
+                {dropdownContent.map(
+                  breed => (
+                      <option
+                        key={`id_${breed.name}`}
+                        onClick={breedChoose}
+                      >
+                        {breed.name}
+                      </option>)
                 )}
               </div>
             </div>
-            : null
+            :
+            null
         }
       </div>
   );

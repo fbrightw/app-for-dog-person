@@ -76,7 +76,6 @@
 .option {
     position: absolute;
     top: calc(100% + 10px);
-    /*max-height: 0;*/
     overflow-y: hidden;
     width: 100%;
     transition: all .3s;
@@ -90,6 +89,7 @@
     width: 100%;
     overflow-y: auto;
     max-height: 260px;
+    background: white;
 }
 
 .custom-option::-webkit-scrollbar {
