@@ -40,8 +40,9 @@ export default function Search(props) {
                 onChoose={onChoose}
             />
           }
-          <Cards selectedBreed={selectedBreed}
-                 isLiked
+          <Cards
+              selectedBreed={selectedBreed}
+              isLiked
           />
         </section>
     )

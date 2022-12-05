@@ -12,13 +12,14 @@ const MyDropdown = (props) => {
     setClickedDropdown(!clickedDropdown);
   }
 
-  const onInput = useMemo(() =>
-  {setDropdownContent([...dropdownContent].filter(breed => breed.name.includes(inputValue)))}, [inputValue])
+  // const onInput = useMemo(() =>
+  // {setDropdownContent([...dropdownContent].filter(breed => breed.name.includes(inputValue)))}, [inputValue])
 
   const handleInputChange = (event) => {
+    let input = event.target.value;
     event.preventDefault();
-    setInputValue(event.target.value);
-    onInput();
+    setInputValue(input);
+    setDropdownContent([...props.data].filter(breed => breed.name.includes(input)))
   }
 
   function breedChoose(e) {
