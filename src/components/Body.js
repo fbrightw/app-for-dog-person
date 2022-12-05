@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import Slider from "./Slider";
-import DropDown from "./DropDown";
+import Search from "./Search";
 import Cards from "./Cards";
 import Description from "./Description";
-import {connect, useDispatch} from 'react-redux'
-import {changeStatus} from "../slices/LikedBreedsSlice";
+import Footer from "./Footer";
 
-class Body extends Component {
+export class Body extends Component {
 
   constructor(props) {
     super(props);
@@ -18,14 +17,6 @@ class Body extends Component {
   }
 
   onChoose(value) {
-    const LikedBreedInStore = this.props.liked;
-    let isBreedInStore = LikedBreedInStore.breeds.find((el => el.name === value));
-    let isLiked = (typeof isBreedInStore !== 'undefined') ? isBreedInStore.isLiked : false;
-    const dispatch = useDispatch();
-    dispatch(changeStatus({
-      name: value,
-      isLiked: isLiked,
-    }))
     this.setState({
       selectedBreed: value,
     })
@@ -33,26 +24,22 @@ class Body extends Component {
 
   render() {
     return (
-        <div className="mx-44 p-10 bg-gray-50 text-center z-auto">
-          <p className="text-4xl text-gray-700 font-bold text-center ">
-            Because everyday is a Dog Day &#128054;
-          </p>
-          <Slider/>
-          <Description />
-          <p className="text-3xl text-gray-700 mb-3 p-10 text-center">
-            Time to choose your buddy
-          </p>
-          <DropDown onChoose={this.onChoose}/>
-          <section id="search">
-            <Cards selectedBreed={this.state.selectedBreed}
-            />
-          </section>
-        </div>
+          <div className="mx-44 p-10 bg-gray-50">
+            <p className="text-4xl text-gray-700 font-bold text-center ">
+              Because everyday is a Dog Day &#128054;
+            </p>
+            <Slider/>
+            <Description />
+            <p className="text-3xl text-gray-700 mb-3 p-10 text-center">
+              Time to choose your buddy
+            </p>
+            <Search onChoose={this.onChoose}/>
+            <section id="search">
+              <Cards selectedBreed={this.state.selectedBreed}
+                     isLiked/>
+            </section>
+            <Footer />
+          </div>
     );
   }
 }
-
-export default connect(state => ({
-   liked: state.likedBreeds
-})
-)(Body)

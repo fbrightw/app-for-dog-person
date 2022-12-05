@@ -85,6 +85,10 @@ module.exports = smp.wrap({
                 ]
             },
             {
+                test: /\.scss$/i,
+                use: ["css-loader", "sass-loader"],
+            },
+            {
                 test: /\.html$/,
                 loader: 'html-loader'
             }

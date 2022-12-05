@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --border: 2px solid #b7b7b7;
+    --color: rgba(66, 68, 72, 0.99)
+}
+
+.select {
+    display: flex;
+    max-width: 60%;
+    width: 100%;
+    position: relative;
+    margin: 0 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-select {
+    border: var(--border);
+    padding: 10px 24px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.select.show .custom-select {
+    background: #f3f3f3;
+}
+
+.custom-select .value input {
+    border: none;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+/*.value input {*/
+/*    border: ;*/
+/*}*/
+
+.custom-select .label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color);
+}
+
+.select.show .option {
+    max-height: 260px;
+}
+
+.custom-select .value {
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
+}
+
+.custom-select i {
+    transition: all .3s ease;
+}
+
+.select.show .custom-select i {
+    transform: rotateZ(180deg);
+}
+
+.option {
+    position: absolute;
+    top: calc(100% + 10px);
+    /*max-height: 0;*/
+    overflow-y: hidden;
+    width: 100%;
+    transition: all .3s;
+    z-index: 500;
+}
+
+.custom-option {
+    border: var(--border);
+    border-radius: 10px;
+    padding: 10px 0;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 260px;
+}
+
+.custom-option::-webkit-scrollbar {
+    display: none;
+}
+
+.custom-option option {
+    padding: 10px 10px 10px 24px;
+    display: flex;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.custom-option option:hover {
+    background: #c2c9d0;
+    cursor: pointer;
+    color: cadetblue;
+}

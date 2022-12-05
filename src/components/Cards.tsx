@@ -42,7 +42,6 @@ export default function Cards(props: ISelectedBreed) {
   const [isLiked, setIsLiked] = useState(props.isLiked);
   const dispatch = useDispatch()
 
-  // console.log('in Cards isLiked', isLiked)
   useEffect(() => {
     fetch(`https://api.thedogapi.com/v1/breeds/search/?q=${props.selectedBreed}`,
         {credentials: 'omit'})

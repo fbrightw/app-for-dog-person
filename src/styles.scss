@@ -1,0 +1,42 @@
+.select-custom {
+  position: relative;
+  display: block;
+  background-color: #fff;
+
+  &__select {
+    position: relative;
+    z-index: 20;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 #000;
+    }
+
+    &:focus {
+      box-shadow: 0 0 8px rgba(#66afe9, 0.6);
+    }
+  }
+
+  &__caret {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    z-index: 10;
+    margin-top: -8px;
+    color: #8e9496;
+  }
+}

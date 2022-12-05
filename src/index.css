@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-.red-color {
-    color: #c53636;
-}
+/*.red-color {*/
+/*    color: #c53636;*/
+/*}*/
+
+/*.dropdown {*/
+/*    display: flex;*/
+/*    !*position: relative;*!*/
+/*}*/
+
+/*.input {*/
+/*    width: 60vw;*/
+/*    height: 7vh;*/
+/*    border: 1px solid black;*/
+/*    border-radius: 20px;*/
+/*    display: flex;*/
+/*    text-align: center;*/
+/*    flex: 1;*/
+/*}*/
+
+/*.input:hover {*/
+/*    background: gray;*/
+/*}*/
