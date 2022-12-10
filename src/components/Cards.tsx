@@ -54,12 +54,14 @@ export default function Cards(props: ISelectedBreed) {
   }, [props.selectedBreed])
 
   function loadImage(data: IBreedInfo[]) {
-    fetch(`https://api.thedogapi.com/v1/images/${data[0].reference_image_id}`,
-        {credentials: 'omit'})
-        .then(response => response.json())
-        .then(data => {
-          setBreedImg(data);
-        })
+      if (data.length > 0) {
+          fetch(`https://api.thedogapi.com/v1/images/${data[0].reference_image_id}`,
+              {credentials: 'omit'})
+              .then(response => response.json())
+              .then(data => {
+                  setBreedImg(data);
+              })
+      }
   }
 
     function onLikeClick() {

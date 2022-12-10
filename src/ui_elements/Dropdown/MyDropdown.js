@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './styles.css'
 import {useMemo} from "react";
+import Options from "../../components/Options";
 
 const MyDropdown = (props) => {
 
@@ -10,6 +11,16 @@ const MyDropdown = (props) => {
 
   function onClickDropdown() {
     setClickedDropdown(!clickedDropdown);
+    scrollDown();
+  }
+
+  function scrollDown() {
+    if (clickedDropdown) {
+      window.scrollTo({
+        bottom: 0,
+        behaviour: 'smooth'
+      })
+    }
   }
 
   // const onInput = useMemo(() =>
@@ -50,19 +61,10 @@ const MyDropdown = (props) => {
         </div>
         {clickedDropdown
             ?
-            <div className="option">
-              <div className="custom-option">
-                {dropdownContent.map(
-                  breed => (
-                      <option
-                        key={`id_${breed.name}`}
-                        onClick={breedChoose}
-                      >
-                        {breed.name}
-                      </option>)
-                )}
-              </div>
-            </div>
+        <Options
+            dropdownContent={dropdownContent}
+            onClick={breedChoose}
+        />
             :
             null
         }

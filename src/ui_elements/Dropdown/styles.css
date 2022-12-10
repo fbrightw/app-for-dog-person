@@ -15,11 +15,12 @@
 .select {
     display: flex;
     max-width: 60%;
-    width: 100%;
+    /*width: 100%;*/
     position: relative;
     margin: 0 20%;
     align-items: center;
     justify-content: center;
+    padding: 10px;
 }
 
 .custom-select {
@@ -35,7 +36,7 @@
 }
 
 .select.show .custom-select {
-    background: #f3f3f3;
+    background: #3a0404;
 }
 
 .custom-select .value input {
@@ -55,10 +56,6 @@
     color: var(--color);
 }
 
-.select.show .option {
-    max-height: 260px;
-}
-
 .custom-select .value {
     display: flex;
     align-items: center;
@@ -73,12 +70,12 @@
     transform: rotateZ(180deg);
 }
 
-.option {
+.option1 {
     position: absolute;
     top: calc(100% + 10px);
     overflow-y: hidden;
     width: 100%;
-    transition: all .3s;
+    transition: all .3s ease;
     z-index: 500;
 }
 
@@ -90,6 +87,7 @@
     overflow-y: auto;
     max-height: 260px;
     background: white;
+    margin-bottom: 30%;
 }
 
 .custom-option::-webkit-scrollbar {
@@ -108,3 +106,5 @@
     cursor: pointer;
     color: cadetblue;
 }
+
+
