@@ -6,6 +6,8 @@ const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const smp = new SpeedMeasurePlugin();
 
+const backendUrl = 'http://localhost:8080'
+
 module.exports = smp.wrap({
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
@@ -21,7 +23,13 @@ module.exports = smp.wrap({
         extensions: ['.js', '.tsx', '.jsx', '.ts']
     },
     devServer: {
-        port: 3200
+        port: 8081,
+        proxy: {
+            '/liked_list': {
+                target: 'http://localhost:3000',
+                router: () => backendUrl,
+            }
+        }
     },
     watchOptions: {
         poll: 1000
