@@ -22,9 +22,9 @@ class AppNavbar extends Component {
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#search">Search</Nav.Link>
                 <NavDropdown title="Action" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Liked List</NavDropdown.Item>
+                  <NavDropdown.Item href="liked_list">Liked List</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
+                  <NavDropdown.Item href="separated_link">
                     Separated link
                   </NavDropdown.Item>
                 </NavDropdown>

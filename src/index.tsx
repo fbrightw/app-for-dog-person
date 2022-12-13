@@ -18,6 +18,7 @@ root.render(
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<App />} />
+                    <Route path="/liked_list" element={<App/>}/>
                 </Routes>
             </BrowserRouter>
         </Provider>
