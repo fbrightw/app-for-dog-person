@@ -40,7 +40,8 @@ export default function Cards(props: ISelectedBreed) {
     // @ts-ignore
   const isLikedBreed = useSelector(state => state.likedBreeds)
   const [isLiked, setIsLiked] = useState(props.isLiked);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const breeds = useSelector(state => state.likedBreeds.breeds);
 
   useEffect(() => {
     fetch(`https://api.thedogapi.com/v1/breeds/search/?q=${props.selectedBreed}`,
@@ -64,11 +65,30 @@ export default function Cards(props: ISelectedBreed) {
       }
   }
 
+    function buildNewArr(obj: ISelectedBreed): ISelectedBreed[] {
+        return breeds.map((el: ISelectedBreed) => {
+            if (el.selectedBreed === obj.selectedBreed)
+                return {...el, isLiked: obj.isLiked}
+            else
+                return el
+        })
+    }
+
     function onLikeClick() {
-        dispatch(changeStatus({
-            name: props.selectedBreed,
-            isLiked: !props.isLiked
-        }))
+      let obj = {
+          selectedBreed: props.selectedBreed,
+          isLiked: isLiked
+      };
+        console.log("breed", breeds)
+        // @ts-ignore
+        let a = breeds.find(({selectedBreed}) => selectedBreed === obj.selectedBreed);
+        if (typeof a !== 'undefined') {
+            const newArr = buildNewArr(obj);
+            dispatch(changeStatus(newArr))
+        }
+        else
+            // @ts-ignore
+            dispatch(changeStatus([...breeds, obj]))
         setIsLiked(!isLiked)
     }
 

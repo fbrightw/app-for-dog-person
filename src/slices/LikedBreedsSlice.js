@@ -1,21 +1,21 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-  breeds: [],
+  breeds: []
 }
 
 const likedBreedsSlice = createSlice({
   name: 'likedBreeds',
   initialState,
   reducers: {
-    changeStatus(state, action) {
-      return {
-        breeds: [...state, action.payload]
-      }
+    changeStatus(state= initialState, action) {
+        return {
+          ...state,
+          breeds: action.payload
+        }
     }
   }
 })
 
 export const { changeStatus } = likedBreedsSlice.actions
 export default likedBreedsSlice.reducer
-
