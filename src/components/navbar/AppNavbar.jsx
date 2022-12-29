@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-class AppNavbar extends Component {
-  render() {
+function AppNavbar() {
+
     return (
         <Navbar expand="lg">
           <Container>
             <img
-                src="/paw.png"
+                src="/public/paw.png"
                 width="32"
                 height="32"
                 className="d-inline-block align-top"
@@ -33,7 +33,6 @@ class AppNavbar extends Component {
           </Container>
         </Navbar>
     );
-  }
 }
 
 export default AppNavbar;

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './styles.css'
 import {useMemo} from "react";
-import Options from "../../components/Options";
+import Options from "../../components/sections/search/Options";
 
 const MyDropdown = (props) => {
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import SimpleImageSlider from "react-simple-image-slider";
-import "../index.css"
+import "../../index.css"
 
 export default function Slider() {
 

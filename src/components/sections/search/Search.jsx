@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from "react";
-import MyDropdown from "../ui_elements/Dropdown/MyDropdown";
+import MyDropdown from "../../../ui_elements/Dropdown/MyDropdown";
 import Cards from "./Cards";
 
 export default function Search(props) {
@@ -41,7 +41,7 @@ export default function Search(props) {
           }
           <Cards
               selectedBreed={selectedBreed}
-              isLiked
+              isLiked={false}
           />
         </section>
     )

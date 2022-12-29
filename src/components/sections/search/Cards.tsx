@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Card, ListGroup} from "react-bootstrap";
 import {useDispatch, useSelector} from 'react-redux'
-import {changeStatus} from "../slices/LikedBreedsSlice";
+import {changeStatus} from "../../../slices/LikedBreedsSlice";
 
 interface IBreedInfo {
   weight: {
@@ -37,10 +37,9 @@ export default function Cards(props: ISelectedBreed) {
 
   const [breedInfo, setBreedInfo] = useState<IBreedInfo[]>([])
   const [breedImg, setBreedImg] = useState<IBreedImg>({breeds: [], height: "", id: "", url: "", width: ""})
-    // @ts-ignore
-  const isLikedBreed = useSelector(state => state.likedBreeds)
-  const [isLiked, setIsLiked] = useState(props.isLiked);
+  const [isLiked, setIsLiked] = useState(false);
   const dispatch = useDispatch();
+  // @ts-ignore
   const breeds = useSelector(state => state.likedBreeds.breeds);
 
   useEffect(() => {
@@ -65,35 +64,34 @@ export default function Cards(props: ISelectedBreed) {
       }
   }
 
-    function buildNewArr(obj: ISelectedBreed): ISelectedBreed[] {
+    function buildNewArr(): ISelectedBreed[] {
         return breeds.map((el: ISelectedBreed) => {
-            if (el.selectedBreed === obj.selectedBreed)
-                return {...el, isLiked: obj.isLiked}
+            if (el.selectedBreed === props.selectedBreed)
+                return {...el, isLiked: !el.isLiked}
             else
                 return el
         })
     }
 
-    function onLikeClick() {
-      let obj = {
-          selectedBreed: props.selectedBreed,
-          isLiked: isLiked
-      };
-        console.log("breed", breeds)
+    function onLikeClick(heartBtnIsClicked: boolean) {
         // @ts-ignore
-        let a = breeds.find(({selectedBreed}) => selectedBreed === obj.selectedBreed);
+        let a = breeds.find(({selectedBreed}) => selectedBreed === props.selectedBreed);
         if (typeof a !== 'undefined') {
-            const newArr = buildNewArr(obj);
-            dispatch(changeStatus(newArr))
-        }
-        else
+            const newArr = buildNewArr();
+            dispatch(changeStatus(newArr));
             // @ts-ignore
-            dispatch(changeStatus([...breeds, obj]))
-        setIsLiked(!isLiked)
+            setIsLiked(heartBtnIsClicked);
+        }
+        else {
+            dispatch(changeStatus([...breeds, {
+                selectedBreed: props.selectedBreed,
+                isLiked: true
+            }]));
+            setIsLiked(true);
+        }
     }
 
   function onArrowClick() {
-      // @ts-ignore
       window.scrollTo({
           top: 0,
           behaviour: 'smooth'
@@ -122,7 +120,7 @@ export default function Cards(props: ISelectedBreed) {
                         <button
                             type="button"
                             className="btn btn-light"
-                            onClick={() => onLikeClick()}
+                            onClick={() => onLikeClick(!isLiked)}
                         >
                             <span id="heart" className={isLiked ? "bi bi-heart-fill red-color" : "bi bi-heart-fill"}></span>
                         </button>
@@ -133,6 +131,5 @@ export default function Cards(props: ISelectedBreed) {
                 </Card>
             </div>
             : null
-
     );
 }

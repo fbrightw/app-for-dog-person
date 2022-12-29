@@ -22,15 +22,15 @@ module.exports = smp.wrap({
     resolve: {
         extensions: ['.js', '.tsx', '.jsx', '.ts']
     },
-    devServer: {
-        port: 8081,
-        proxy: {
-            '/liked_list': {
-                target: 'http://localhost:3000',
-                router: () => backendUrl,
-            }
-        }
-    },
+    // devServer: {
+    //     port: 8081,
+    //     proxy: {
+    //         '/liked_list': {
+    //             target: 'http://localhost:3000',
+    //             router: () => backendUrl,
+    //         }
+    //     }
+    // },
     watchOptions: {
         poll: 1000
     },

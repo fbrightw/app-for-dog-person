@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import Slider from "./Slider";
-import Search from "./Search";
-import Cards from "./Cards";
-import Description from "./Description";
-import Footer from "./Footer";
+import Slider from "./home/Slider";
+import Search from "./sections/search/Search";
+import Description from "./home/Description";
+import Footer from "./footer/Footer";
 
-export class Body extends Component {
+export default class Index extends Component {
 
   constructor(props) {
     super(props);

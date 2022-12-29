@@ -1,13 +1,13 @@
 import React from 'react';
-import {Body} from './components/Body';
-import AppNavbar from "./components/AppNavbar";
+import Index from './components';
+import AppNavbar from "./components/navbar/AppNavbar";
 
 export default function App() {
 
     return (
         <div>
             <AppNavbar/>
-            <Body />
+            <Index />
         </div>
     );
 };
